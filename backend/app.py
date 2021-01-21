@@ -10,12 +10,17 @@ app.config['MYSQL_DB'] = 'sripathi'
 mysql = MySQL(app)
 @app.route('/')
 def index():
-    return 'Web App with Python Flask!'
+    return 'Welcome to beauty parlour website'
 
 
 @app.route('/beauty-parlour-list')
 def list():
-    dat
-    return 'List of bueayt-parlours'
+    # Mysql implemation takes place
+    return 'List of bueatt-parlours'
+
+@app.route('/add-beauty-parlour')
+def add():
+    # Mysql implemation takes place
+    return 'add beauty parlour data'
 
 app.run(host='0.0.0.0', port=81)
