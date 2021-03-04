@@ -1,6 +1,8 @@
+'''
+sample application
+'''
 from flask import Flask, render_template, request,redirect
 from flask_mysqldb import MySQL
-
 app = Flask(__name__)
 app.config['MYSQL_HOST'] = 'beautyparlour-db.cjbzogxmg5tz.us-east-2.rds.amazonaws.com'
 app.config['MYSQL_USER'] = 'root'
