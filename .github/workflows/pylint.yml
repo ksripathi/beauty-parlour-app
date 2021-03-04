@@ -9,7 +9,8 @@ jobs:
     - name: ping sig tools
       run: |
         nslookup iodev.dev.polaris.synopsys.com
-        ping iodev.dev.polaris.synopsys.com
+        ping -c 5 iodev.dev.polaris.synopsys.com
+        ping -c 5 sig-gitlab.internal.synopsys.com
   ci:
     runs-on: ubuntu-latest
     needs: ping
