@@ -24,7 +24,7 @@ def list():
 def add():
 
     if request.method == "GET":
-        return render_template('index.html') 
+        return render_template('index.html')
     if request.method == "POST":
         details = request.form
         name = details['name']
@@ -34,7 +34,8 @@ def add():
         contact = int(details['contact'])
         email = details['email']
         cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO Studio7beautyparlor(name, age, sex, location, contact, email) VALUES (%s, %s, %s, %s, %s, %s)", \
+        cur.execute("INSERT INTO Studio7beautyparlor(name, age, sex, location, contact, email) " +\
+                    "VALUES (%s, %s, %s, %s, %s, %s)", \
                     (name, age, sex, location, contact, email))
         mysql.connection.commit()
         cur.close()
