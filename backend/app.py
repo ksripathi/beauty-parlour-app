@@ -10,19 +10,19 @@ app.config['MYSQL_DB'] = 'sripathi'
 mysql = MySQL(app)
 @app.route('/')
 def index():
+    '''
+    Main landing api
+    '''
     cur = mysql.connection.cursor()
     cur.execute('SELECT * FROM Studio7beautyparlor')
     data = cur.fetchall()
     return render_template('list.html', output_data = data)
 
-@app.route('/beauty-parlour-list')
-def list():
-    # Mysql implemation takes place
-    return 'List of bueatt-parlours'
-
 @app.route('/add-beauty-parlour', methods=['GET','POST'])
 def add():
-
+    '''
+    API for adding details
+    '''
     if request.method == "GET":
         return render_template('index.html')
     if request.method == "POST":
