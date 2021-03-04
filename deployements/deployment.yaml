@@ -39,3 +39,21 @@ spec:
           initialDelaySeconds: 30
           timeoutSeconds: 1
           periodSeconds: 30
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: beauty-parlour-app
+  annotations:
+    service.beta.kubernetes.io/do-loadbalancer-protocol: "http"
+  labels:
+    app: flask
+    tier: beauty-parlour-app
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8081
+  # The selector tells the service on which deployment it should be applied
+  selector:
+    app: flask
+    tier: beauty-parlour-app
