@@ -3,9 +3,16 @@ name: Pylint
 on: [push]
 
 jobs:
-  ci:
-    #runs-on: ubuntu-latest
+  ping:
     runs-on: sripathi
+    steps:
+    - name: ping sig tools
+      run: |
+        nslookup iodev.dev.polaris.synopsys.com
+        ping iodev.dev.polaris.synopsys.com
+  ci:
+    runs-on: ubuntu-latest
+    needs: ping
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.8
