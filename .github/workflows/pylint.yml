@@ -2,17 +2,8 @@ name: Pylint
 
 on: [push]
 jobs:
-  ping:
-    runs-on: sripathi
-    steps:
-    - name: ping sig tools
-      run: |
-        nslookup iodev.dev.polaris.synopsys.com
-        ping -c 5 iodev.dev.polaris.synopsys.com
-        ping -c 5 sig-gitlab.internal.synopsys.com
   ci:
     runs-on: ubuntu-latest
-    needs: ping
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.8
@@ -69,7 +60,10 @@ jobs:
           version: "v0.9.0"
       - name: Testing
         run: |
-          docker ps
+          cd backend
+          docker build . -t beauty-parlour-app
+          docker tag beauty-parlour-app:latest beauty-parlour-app:latest
+          kind load docker-image beauty-parlour-app beauty-parlour-app:latest
           kubectl cluster-info
           kubectl get pods -n kube-system
           echo "current-context:" $(kubectl config current-context)
