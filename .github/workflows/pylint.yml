@@ -43,7 +43,7 @@ jobs:
       - name: Terraform Format
         id: fmt
         run: |
-          cd deployments
+          cd deployements
           terraform fmt -check -diff -recursive
 
       - name: Terraform Lint
