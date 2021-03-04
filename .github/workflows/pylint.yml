@@ -21,3 +21,33 @@ jobs:
       run: |
         cd backend
         pylint `ls -R|grep .py$|xargs`
+  terraform:
+    name: "Terraform"
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./deployments
+    steps:
+      # https://github.com/actions/checkout/releases
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # https://github.com/hashicorp/setup-terraform/releases
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          # TODO: how do we maintain different terraform versions per workspace/folder requirement
+          terraform_version: 0.13.5
+
+      # https://github.com/lablabs/setup-tflint
+      # https://github.com/terraform-linters/tflint/releases
+      - name: Setup TFLint
+        run: |
+          curl https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
+      - name: Terraform Format
+        id: fmt
+        run: terraform fmt -check -diff -recursive
+
+      - name: Terraform Lint
+        id: lint
+        run: tflint
