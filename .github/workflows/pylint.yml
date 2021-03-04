@@ -15,7 +15,7 @@ jobs:
         python-version: 3.8
     - name: Install dependencies
       run: |
-        apt-get install libmysqlclient-dev
+        sudo apt-get install libmysqlclient-dev
         pip install pylint flask flask-mysqldb
     - name: Analysing the code with pylint
       run: |
