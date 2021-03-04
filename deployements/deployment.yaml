@@ -21,7 +21,7 @@ spec:
       # This tells you what docker container should be running inside a pod
       containers:
       - name: beauty-parlour-app
-        image: mrasap/flask
+        image: beauty-parlour-app:latest
         ports:
         - containerPort: 8081
         # These probes are used to check whether it is still alive
