@@ -61,6 +61,7 @@ jobs:
           version: "v0.9.0"
       - name: Testing
         run: |
+          docker ps
           kubectl cluster-info
           kubectl get pods -n kube-system
           echo "current-context:" $(kubectl config current-context)
