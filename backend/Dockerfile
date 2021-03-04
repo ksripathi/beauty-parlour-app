@@ -6,7 +6,7 @@ RUN apt-get update && \
     pip install flask flask-mysqldb
     
 RUN mkdir -p /app
-COPY backend/ /app/
+COPY ./ /app/
 WORKDIR /app
 
 ENTRYPOINT ["python"]
