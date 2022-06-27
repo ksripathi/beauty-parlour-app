@@ -3,8 +3,6 @@
 
 `pip install flask`
 
-`apt-get install mysql-server`
-
 `python app.py`
 
 # Access from Browser
